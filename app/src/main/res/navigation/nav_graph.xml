@@ -17,5 +17,56 @@
         android:id="@+id/principalFragment"
         android:name="com.jonkandidi.bibliotecadejuegos.PrincipalFragment"
         android:label="fragment_principal"
-        tools:layout="@layout/fragment_principal" />
+        tools:layout="@layout/fragment_principal" >
+        <action
+            android:id="@+id/action_principalFragment_to_misJuegosFragment2"
+            app:destination="@id/misJuegosFragment2" />
+        <action
+            android:id="@+id/action_principalFragment_to_insertarEditarFragment"
+            app:destination="@id/insertarEditarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/misJuegosFragment2"
+        android:name="com.jonkandidi.bibliotecadejuegos.MisJuegosFragment"
+        android:label="fragment_mis_juegos"
+        tools:layout="@layout/fragment_mis_juegos" >
+        <action
+            android:id="@+id/action_misJuegosFragment2_to_principalFragment"
+            app:destination="@id/principalFragment" />
+        <action
+            android:id="@+id/action_misJuegosFragment2_to_verJuegoFragment"
+            app:destination="@id/verJuegoFragment" />
+        <action
+            android:id="@+id/action_misJuegosFragment2_to_insertarEditarFragment"
+            app:destination="@id/insertarEditarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertarEditarFragment"
+        android:name="com.jonkandidi.bibliotecadejuegos.InsertarEditarFragment"
+        android:label="fragment_insertar_editar"
+        tools:layout="@layout/fragment_insertar_editar" >
+        <argument
+            android:name="juegoId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+        <action
+            android:id="@+id/action_insertarEditarFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verJuegoFragment"
+        android:name="com.jonkandidi.bibliotecadejuegos.VerJuegoFragment"
+        android:label="fragment_ver_juego"
+        tools:layout="@layout/fragment_ver_juego" >
+        <argument
+            android:name="juego"
+            app:argType="com.jonkandidi.bibliotecadejuegos.entidades.Juego"
+            app:nullable="false" />
+        <action
+            android:id="@+id/action_verJuegoFragment_to_misJuegosFragment2"
+            app:destination="@id/misJuegosFragment2" />
+        <action
+            android:id="@+id/action_verJuegoFragment_to_principalFragment"
+            app:destination="@id/principalFragment" />
+    </fragment>
 </navigation>

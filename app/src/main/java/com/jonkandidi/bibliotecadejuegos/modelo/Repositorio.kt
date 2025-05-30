@@ -21,7 +21,7 @@ class Repositorio (val miDAO: JuegoDAO) {
     suspend fun modificar(juego: Juego){
         miDAO.modificar(juego)
     }
-    fun buscarJuego(id:Int): Flow<Juego>{
+    fun buscarJuego(id:Int): Flow<Juego?>{
         return miDAO.buscarJuego(id)
     }
 }

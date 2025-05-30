@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface JuegoDAO {
 
-    @Query("SELECT * FROM juegos ORDER BY TITULO ASC")
+    @Query("SELECT * FROM juego ORDER BY titulo ASC")
     fun mostrarJuegos(): Flow<List<Juego>>
 
-    @Query("SELECT * FROM JUEGOS where ID like :id")
-    fun buscarJuego(id:Int): Flow<Juego>
+    @Query("SELECT * FROM juego where id like :id")
+    fun buscarJuego(id:Int): Flow<Juego?>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertar(juego: Juego)

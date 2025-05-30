@@ -1,6 +1,7 @@
 package com.jonkandidi.bibliotecadejuegos.modelo
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -9,7 +10,21 @@ import com.jonkandidi.bibliotecadejuegos.entidades.Juego
 import kotlinx.coroutines.launch
 
 class JuegoViewModel(private val miRepositorio: Repositorio): ViewModel() {
-    val listaJuegos: LiveData<List<Juego>> = miRepositorio.mostrarJuegos().asLiveData()
+
+    var usuario: Usuario? = null
+
+    val listaJuegos: MutableLiveData<List<Juego>> = miRepositorio.mostrarJuegos().asLiveData() as MutableLiveData<List<Juego>>
+
+    fun agregarJuego(juego: Juego) {
+        val listaActual = listaJuegos.value ?: listOf()
+        listaJuegos.value = listaActual.toMutableList().apply {
+            add(juego)
+        }
+    }
+
+    fun buscarJuegoPorId(id: Int) : LiveData<Juego?> {
+        return miRepositorio.buscarJuego(id).asLiveData()
+    }
 
     fun insertar(juego: Juego) = viewModelScope.launch {
         miRepositorio.insertar(juego)

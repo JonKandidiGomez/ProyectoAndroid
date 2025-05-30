@@ -1,30 +1,63 @@
+package com.jonkandidi.bibliotecadejuegos.adaptador
+
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.jonkandidi.bibliotecadejuegos.MisJuegosFragmentDirections
+import com.jonkandidi.bibliotecadejuegos.R
+import com.jonkandidi.bibliotecadejuegos.databinding.RecyclerviewItemBinding
 import com.jonkandidi.bibliotecadejuegos.entidades.Juego
 
+class Adaptador(
+    private val lista: MutableList<Juego>,
+    private val onVerClick: (Juego) -> Unit,
+    private val onEditarClick: (Juego) -> Unit,
+    private val onBorrarClick: (Juego) -> Unit
+) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
-class Adaptador(val lista:MutableList<Juego>): RecyclerView.Adapter<Adaptador.ViewHolder>(){
+    inner class ViewHolder(val binding: RecyclerviewItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    //El ViewHolder es la clase de cada uno de los contenedores
-    inner class ViewHolder (val binding: RecyclerviewItemBinding): RecyclerView.ViewHolder(binding.root){
-    }
-
-    //captura la vista que hemos creado (recyclerview_item) y crea una instancia del viewholder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = RecyclerviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    //cargamos los datos en cada una de las instancias del ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.rviNombre.text=lista[position].nombre
+        val juego = lista[position]
+
+        with(holder.binding) {
+            rvTvTitulo.text = juego.titulo
+            rvTvDesarrollador.text = juego.desarrollador
+
+            if (juego.imagen?.isNotEmpty() == true) {
+                rvIFoto.setImageBitmap(BitmapFactory.decodeByteArray(juego.imagen, 0, juego.imagen.size))
+            } else {
+                rvIFoto.setImageResource(R.mipmap.ic_launcher)
+            }
+
+            rvBVer.setOnClickListener {
+                val action = MisJuegosFragmentDirections
+                    .actionMisJuegosFragment2ToVerJuegoFragment(juego)
+                it.findNavController().navigate(action)
+            }
+
+            rvbEditar.setOnClickListener {
+                val action = MisJuegosFragmentDirections
+                    .actionMisJuegosFragment2ToInsertarEditarFragment(juegoId = juego.id)
+                it.findNavController().navigate(action)
+            }
+            rvbBorrar.setOnClickListener { onBorrarClick(juego) }
+        }
     }
 
-    //retorna el número de elementos que vamos a querer que tenga el contenedor padre
-    override fun getItemCount(): Int {
-        return lista.count()
+    override fun getItemCount(): Int = lista.size
+
+    fun setData(nuevaLista: List<Juego>) {
+        lista.clear()
+        lista.addAll(nuevaLista)
+        notifyDataSetChanged()
     }
 }
+

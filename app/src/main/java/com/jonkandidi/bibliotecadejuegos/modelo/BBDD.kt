@@ -18,7 +18,7 @@ abstract class BBDD : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     BBDD::class.java,
-                    "palabra_dataBase"
+                    "biblioteca_de_juegos_db"
                 ).build()
                 INSTANCE = instance
                 instance
