@@ -20,4 +20,7 @@
     <string name="imagen_del_juego">Imagen del juego</string>
     <string name="nuevo_juego">Nuevo juego</string>
     <string name="mis_juegos">Mis juegos</string>
+    <string name="boton_borrar">Boton borrar</string>
+    <string name="boton_editar">Boton editar</string>
+    <string name="boton_ver">Boton ver</string>
 </resources>

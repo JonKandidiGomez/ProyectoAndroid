@@ -25,6 +25,7 @@
                 android:id="@+id/rvIFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/imagen_del_juego"
                 tools:srcCompat="@mipmap/ic_launcher_foreground" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,6 +72,7 @@
                 android:layout_width="85dp"
                 android:layout_height="50dp"
                 android:background="@drawable/botones"
+                android:contentDescription="@string/boton_ver"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/rvbEditar"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +84,7 @@
                 android:layout_width="85dp"
                 android:layout_height="50dp"
                 android:background="@drawable/botones"
+                android:contentDescription="@string/boton_editar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/rvbBorrar"
                 app:layout_constraintStart_toEndOf="@+id/rvBVer"
@@ -93,6 +96,7 @@
                 android:layout_width="85dp"
                 android:layout_height="50dp"
                 android:background="@drawable/boton_borrar"
+                android:contentDescription="@string/boton_borrar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/rvbEditar"

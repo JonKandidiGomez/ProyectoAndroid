@@ -12,8 +12,6 @@ import com.jonkandidi.bibliotecadejuegos.entidades.Juego
 
 class Adaptador(
     private val lista: MutableList<Juego>,
-    private val onVerClick: (Juego) -> Unit,
-    private val onEditarClick: (Juego) -> Unit,
     private val onBorrarClick: (Juego) -> Unit
 ) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
