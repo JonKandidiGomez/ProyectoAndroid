@@ -6,8 +6,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.jonkandidi.bibliotecadejuegos.databinding.ActivityMainBinding
 import com.jonkandidi.bibliotecadejuegos.modelo.JuegoViewModel
 import androidx.activity.viewModels

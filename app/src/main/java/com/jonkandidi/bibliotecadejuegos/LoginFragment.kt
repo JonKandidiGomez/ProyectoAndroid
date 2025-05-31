@@ -36,12 +36,12 @@ class LoginFragment : Fragment() {
 
         val datos:SharedPreferences= (activity as MainActivity).getSharedPreferences("datos",Context.MODE_PRIVATE)
         val nombreUsuario = datos.getString("nombreUsuario", null)
-        val contraseña = datos.getString("contraseña", null)
+        val contrasenya = datos.getString("contraseña", null)
 
         binding.bLogin.setOnClickListener {
-            if (nombreUsuario != null && contraseña != null) {
-                if (nombreUsuario == binding.etNombreUsuario.text.toString() && contraseña == binding.etContraseA.text.toString()) {
-                    (activity as MainActivity).miViewModel.usuario = Usuario(nombreUsuario, contraseña)
+            if (nombreUsuario != null && contrasenya != null) {
+                if (nombreUsuario == binding.etNombreUsuario.text.toString() && contrasenya == binding.etContraseA.text.toString()) {
+                    (activity as MainActivity).miViewModel.usuario = Usuario(nombreUsuario, contrasenya)
                     findNavController().navigate(R.id.action_loginFragment_to_principalFragment)
                 } else {
                     Toast.makeText((activity as MainActivity).baseContext, "ERROR. Nombre de usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
