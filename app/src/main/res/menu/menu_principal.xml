@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_ver_juegos"
+        android:title="@string/mis_juegos" />
+
+    <item android:id="@+id/action_insertar_juego"
+        android:title="@string/nuevo_juego" />
+
+    <item android:id="@+id/action_logout"
+        android:title="@string/cerrar_sesi_n" />
+</menu>

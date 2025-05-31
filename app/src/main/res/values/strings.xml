@@ -23,4 +23,13 @@
     <string name="boton_borrar">Boton borrar</string>
     <string name="boton_editar">Boton editar</string>
     <string name="boton_ver">Boton ver</string>
+    <string name="boton_seleccionar_imagen">Boton seleccionar imagen</string>
+    <string name="resumen">Resumen...</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="guardar">Guardar</string>
+    <string name="_1999">1999</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
+    <string name="volver_al_inicio">Volver al inicio</string>
+    <string name="limpiar_campos">Limpiar campos</string>
+    <string name="editar_juego">Editar Juego</string>
 </resources>

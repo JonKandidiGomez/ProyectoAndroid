@@ -2,9 +2,15 @@ package com.jonkandidi.bibliotecadejuegos
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jonkandidi.bibliotecadejuegos.adaptador.Adaptador
@@ -28,16 +34,47 @@ class MisJuegosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val menuHost: MenuHost = requireActivity()
+        if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED).not()) {
+            menuHost.addMenuProvider(object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.menu_misjuegos, menu)
+                }
+
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    return when (menuItem.itemId) {
+                        R.id.action_logout -> {
+                            (activity as MainActivity).miViewModel.usuario = null
+                            findNavController().navigate(R.id.loginFragment)
+                            true
+                        }
+
+                        R.id.action_insertar_juego -> {
+                            findNavController().navigate(R.id.insertarEditarFragment)
+                            true
+                        }
+
+                        R.id.action_volver_principal -> {
+                            findNavController().navigate(R.id.principalFragment)
+                            true
+                        }
+
+                        else -> false
+                    }
+                }
+            }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }
+
         adaptador = Adaptador(
             mutableListOf(),
             onVerClick = { juego ->
                 val action = MisJuegosFragmentDirections
-                    .actionMisJuegosFragment2ToVerJuegoFragment(juego)
+                    .actionMisJuegosFragmentToVerJuegoFragment(juego)
                 findNavController().navigate(action)
             },
             onEditarClick = { juego ->
                 val action = MisJuegosFragmentDirections
-                    .actionMisJuegosFragment2ToInsertarEditarFragment(juego.id)
+                    .actionMisJuegosFragmentToInsertarEditarFragment(juego.id)
                 findNavController().navigate(action)
             },
             onBorrarClick = { juego ->
@@ -50,6 +87,10 @@ class MisJuegosFragment : Fragment() {
 
         (activity as MainActivity).miViewModel.listaJuegos.observe(viewLifecycleOwner) { lista ->
             adaptador.setData(lista)
+        }
+
+        binding.bAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_misJuegosFragment_to_insertarEditarFragment)
         }
     }
 

@@ -3,6 +3,9 @@
     <style name="Base.Theme.BibliotecaDeJuegos" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/allerta_stencil</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Theme.BibliotecaDeJuegos" parent="Base.Theme.BibliotecaDeJuegos" />
