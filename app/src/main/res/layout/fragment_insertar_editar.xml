@@ -1,211 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:isScrollContainer="true"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    tools:context=".InsertarEditarFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvInsertarEditar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient"
-        android:isScrollContainer="true"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        tools:context=".InsertarEditarFragment">
+        android:fontFamily="@font/allerta_stencil"
+        android:text="@string/a_adir_nuevo_juego"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/etTituloJuego"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etTituloJuego"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:fontFamily="@font/allerta_stencil"
+        android:hint="@string/titulo"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/llAnyo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInsertarEditar" />
+
+    <LinearLayout
+        android:id="@+id/llAnyo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/etDesarrollador"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTituloJuego">
 
         <TextView
-            android:id="@+id/tvInsertarEditar"
+            android:id="@+id/tvAnyo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/allerta_stencil"
+            android:text="@string/a_o_de_publicaci_n"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etAnyo"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/editbox_background"
+            android:ems="10"
+            android:fontFamily="@font/allerta_stencil"
+            android:hint="@string/_1999"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etDesarrollador"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:fontFamily="@font/allerta_stencil"
+        android:hint="@string/desarrollador"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/clImagen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llAnyo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clImagen"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/etResumen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDesarrollador">
+
+        <TextView
+            android:id="@+id/tvImagen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/allerta_stencil"
-            android:text="@string/a_adir_nuevo_juego"
+            android:text="@string/imagen"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/etTituloJuego"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivImagen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/etTituloJuego"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="@android:drawable/editbox_background"
-            android:ems="10"
-            android:fontFamily="@font/allerta_stencil"
-            android:hint="@string/titulo"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/llAnyo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvInsertarEditar" />
+        <ImageView
+            android:id="@+id/ivImagen"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/imagen_del_juego"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bImagen"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvImagen"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <LinearLayout
-            android:id="@+id/llAnyo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/etDesarrollador"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etTituloJuego">
-
-            <TextView
-                android:id="@+id/tvAnyo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/allerta_stencil"
-                android:text="@string/a_o_de_publicaci_n"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/etAnyo"
-                android:layout_width="100dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:background="@android:drawable/editbox_background"
-                android:ems="10"
-                android:fontFamily="@font/allerta_stencil"
-                android:hint="@string/_1999"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/etDesarrollador"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:background="@android:drawable/editbox_background"
-            android:ems="10"
-            android:fontFamily="@font/allerta_stencil"
-            android:hint="@string/desarrollador"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/cvImagen"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llAnyo" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cvImagen"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/etResumen"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDesarrollador">
-
-            <TextView
-                android:id="@+id/tvImagen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/allerta_stencil"
-                android:text="@string/imagen"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ivImagen"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/ivImagen"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:contentDescription="@string/imagen_del_juego"
-                android:src="@mipmap/ic_launcher"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/bImagen"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tvImagen"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageButton
-                android:id="@+id/bImagen"
-                android:layout_width="85dp"
-                android:layout_height="50dp"
-                android:background="@drawable/botones"
-                android:contentDescription="@string/boton_seleccionar_imagen"
-                android:src="@drawable/outline_add_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivImagen"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <EditText
-            android:id="@+id/etResumen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@android:drawable/editbox_background"
-            android:ems="10"
-            android:fontFamily="@font/allerta_stencil"
-            android:gravity="start|top"
-            android:hint="@string/resumen"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:minHeight="48dp"
-            android:overScrollMode="ifContentScrolls"
-            android:scrollbars="vertical"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/clBotones"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvImagen" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clBotones"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/bImagen"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:background="@drawable/botones"
+            android:contentDescription="@string/boton_seleccionar_imagen"
+            android:src="@drawable/outline_add_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etResumen">
-
-            <Button
-                android:id="@+id/bGuardar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:background="@drawable/botones"
-                android:fontFamily="@font/allerta_stencil"
-                android:text="@string/guardar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/bLimpiar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/bLimpiar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:background="@drawable/boton_borrar"
-                android:fontFamily="@font/allerta_stencil"
-                android:text="@string/limpiar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/bGuardar"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toEndOf="@+id/ivImagen"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+    <EditText
+        android:id="@+id/etResumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:drawable/editbox_background"
+        android:ems="10"
+        android:fontFamily="@font/allerta_stencil"
+        android:gravity="start|top"
+        android:hint="@string/resumen"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:maxHeight="250dp"
+        android:minHeight="48dp"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/clBotones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clImagen" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clBotones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etResumen">
+
+        <Button
+            android:id="@+id/bGuardar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/botones"
+            android:fontFamily="@font/allerta_stencil"
+            android:text="@string/guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bLimpiar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bLimpiar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:background="@drawable/boton_borrar"
+            android:fontFamily="@font/allerta_stencil"
+            android:text="@string/limpiar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bGuardar"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

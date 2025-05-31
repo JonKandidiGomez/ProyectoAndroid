@@ -52,6 +52,12 @@ class VerJuegoFragment : Fragment() {
                             true
                         }
 
+                        R.id.action_logout -> {
+                            (activity as MainActivity).miViewModel.usuario = null
+                            findNavController().navigate(R.id.loginFragment)
+                            true
+                        }
+
                         else -> false
                     }
                 }

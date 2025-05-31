@@ -22,11 +22,11 @@
             <ImageView
                 android:id="@+id/ivImagenJuego"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:scaleType="centerCrop"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/imagen_del_juego"
-                android:src="@mipmap/ic_launcher"/>
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/tvTitulo"
